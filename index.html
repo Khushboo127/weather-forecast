@@ -4,14 +4,173 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Weather Forecast App</title>
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
 
-<body class="bg-slate-100 min-h-screen flex items-center justify-center p-6">
-    <h1 class="text-2xl font-bold text-center">🌦️ Weather Forecast App</h1>
+    <title>Weather Forecast App</title>
+    <link rel="icon" href="assets/images.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:opsz,wdth,wght@18..144,99.9,300&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    .merriweather {
+        font-family: "Merriweather", serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 99.9;
+    }
+</style>
+
+<body class=" backgound merriweather bg-cover min-h-screen text-white"
+    style="background-image: url(./assets/pexels-pixabay-164024.jpg);">
+    <!--Header Section -->
+    <div class="header_section sm:flex flex-col ">
+        <header class="header flex h-[80px] sm:h-auto bg-black/10 items-center justify-around sm:px-8 py-4 gap-3">
+            <h2 class="sm:text-2xl">Weather Explorer</h2>
+            <div class=" Search-bar flex w-[60%] gap-4 sm:flex-col">
+                <input type="text" placeholder="Enter The City" id="city"
+                    class="w-[50%] h-[50%] border rounded p-2 focus:outline-none focus:ring-2 focus:ring-white">
+                <button class="Search-btn p-2 h-[50%] border rounded hover:scale-105 ">Search</button>
+                <span class="text-center flex justify-center items-center">Or</span>
+                <button class="location p-2 h-[50%] border rounded flex items-center gap-2 hover:scale-105">
+                    <img src="./assets/loaction (2).png" class="w-6 h-6" alt="location icon">
+                    <span>Current Location</span>
+                </button>
+
+            </div>
+
+        </header>
+    </div>
+    <!-- No Location Found Section -->
+    <section id="errorSection" class="not-found hidden rounded-lg p-4 max-w-4xl mx-auto text-center">
+        <h2 class="text-lg font-semibold">Location Not Found</h2>
+        <p class="text-sm mt-2">We couldn’t find the city you entered. Please try again.</p>
+    </section>
+    <!-- Current Weather -->
+    <section
+        class="Current-Weather bg-black/20 rounded-xl p-4  sm:p-6 flex flex-col md:flex-row md:justify-between md:items-center gap-3 sm:gap-6 w-full max-w-4xl mx-auto mt-12">
+
+        <div class="left-side flex flex-col gap-4">
+            <h2 id="currentDate" class="text-lg sm:text-xl font-semibold text-white">Day</h2>
+
+            <div class=" flex items-center gap-4">
+                <div class="icon  w-12 sm:w-16 h-12 sm:h-16">
+                    <!-- Icon -->
+                </div>
+
+                <div>
+                    <p id="temperature" class="text-3xl sm:text-5xl font-bold text-white">--°C</p>
+                    <div class="button flex gap-3">
+                        <button class="btn p-1">°C</button>
+                        <button class="btn p-1">°F</button>
+                    </div>
+
+
+                    <p id="condition" class="text-sm sm:text-base text-gray-200">---</p>
+                </div>
+            </div>
+        </div>
+        <!--weather condition -->
+        <div class=" right-side flex flex-col gap-2 text-xs sm:text-sm text-gray-200 mt-4 md:mt-0">
+            <h1 id="location" class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+
+                <span id="cityName">--City</span>
+            </h1>
+            <div class="description">
+                <p class="wind"> Wind: <span>-- m/s</span></p>
+                <p class="humidity"> Humidity: <span>--%</span></p>
+                <p class="pressure"> Pressure: <span>-- mm</span></p>
+                <p class="precip"> Precipitation: <span>-- %</span></p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Forecast Items -->
+    <section class="wheather-forecast  w-full max-w-4xl mx-auto mt-12 ">
+        <section class="day-forecast p-4 ">
+            <h3 class="mb-3 font-semibold text-center">5-Day Forecast</h3>
+            <!--Next forecast Days  -->
+            <div class=" Days grid  md:grid-cols-5 text-center text-xs  gap-4 ">
+
+
+                <div class="day">
+                    <p>Day</p>
+                    <div class=" icon mx-auto w-10 h-10">--</div>
+                    <p id="condition" class="text-sm sm:text-base text-gray-200">---</p>
+                    <p class="font-bold">--°C</p>
+                    <div class="description">
+                        <p id="wind">Wind: <span>-- m/s</span></p>
+                        <p id="humidity">Humidity: <span>--%</span></p>
+                        <p id="pressure">Pressure: <span>-- mm</span></p>
+                        <p id="precip">Precipitation: <span>--% </span></p>
+                    </div>
+                </div>
+
+
+                <div class="day">
+                    <p>Day</p>
+                    <div class="icon mx-auto w-10 h-10">--</div>
+                    <p id="condition" class="text-sm sm:text-base text-gray-200">---</p>
+                    <p class="font-bold">--°C</p>
+                    <div class="description">
+                        <p id="wind">Wind: <span>-- m/s</span></p>
+                        <p id="humidity">Humidity: <span>--%</span></p>
+                        <p id="pressure">Pressure: <span>-- mm</span></p>
+                        <p id="precip">Precipitation: <span>--% </span></p>
+                    </div>
+                </div>
+
+
+                <div class="day">
+                    <p>Day</p>
+                    <div class=" icon mx-auto w-10 h-10">--</div>
+                    <p id="condition" class="text-sm sm:text-base text-gray-200">---</p>
+                    <p class="font-bold">--°C</p>
+                    <div class="description">
+                        <p id="wind">Wind: <span>-- m/s</span></p>
+                        <p id="humidity">Humidity: <span>--%</span></p>
+                        <p id="pressure">Pressure: <span>-- mm</span></p>
+                        <p id="precip">Precipitation: <span>--% </span></p>
+                    </div>
+                </div>
+
+
+                <div class="day">
+                    <p>Day</p>
+                    <div class=" icon mx-auto w-10 h-10">--</div>
+                    <p id="condition" class="text-sm sm:text-base text-gray-200">---</p>
+                    <p class="font-bold">--°C</p>
+                    <div class="description">
+                        <p id="wind">Wind: <span>-- m/s</span></p>
+                        <p id="humidity">Humidity: <span>--%</span></p>
+                        <p id="pressure">Pressure: <span>-- mm</span></p>
+                        <p id="precip">Precipitation: <span>--% </span></p>
+                    </div>
+                </div>
+
+
+                <div class="day">
+                    <p>Day</p>
+                    <div class=" icon mx-auto w-10 h-10">--</div>
+                    <p id="condition" class="text-sm sm:text-base text-gray-200">---</p>
+                    <p class="font-bold">--°C</p>
+                    <div class="description">
+                        <p id="wind">Wind: <span>-- m/s</span></p>
+                        <p id="humidity">Humidity: <span>--%</span></p>
+                        <p id="pressure">Pressure: <span>-- mm</span></p>
+                        <p id="precip">Precipitation: <span>--% </span></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </section>
+
 
     <script src="main.js"></script>
 </body>
