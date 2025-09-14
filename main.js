@@ -114,12 +114,12 @@ function updateUI(data) {
     pressureEl.textContent = `${data.main.pressure} mm`;
     precipEl.textContent = data.clouds ? `${data.clouds.all}%` : "--";
 
-    // ✅ Add today's date + weekday
+    //  Add today's date + weekday
     const today = new Date();
     document.getElementById("currentDate").textContent =
         today.toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
 
-    // ✅ Add current weather icon
+    // Add current weather icon
     const iconEl = document.querySelector(".Current-Weather .icon");
     iconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="weather icon"/>`;
 
@@ -133,7 +133,7 @@ function updateUI(data) {
     // Dynamic background
     setBackground(data.weather[0].main);
 
-    // ✅ Update current weather details
+    //  Update current weather details
     document.querySelector(".wind").innerHTML = `Wind: <span>${data.wind.speed} m/s</span>`;
     document.querySelector(".humidity").innerHTML = `Humidity: <span>${data.main.humidity}%</span>`;
     document.querySelector(".pressure").innerHTML = `Pressure: <span>${data.main.pressure} mm</span>`;
