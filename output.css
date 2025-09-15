@@ -904,3 +904,72 @@
   outline: none;
   box-shadow: 0 0 5px white;
 }
+
+/* 🌐 Base (Desktop by default) */
+/* Already handled by your Tailwind and default styles */
+
+
+/* 📱 iPad Mini (Portrait & Landscape up to 768px) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 12px;
+  }
+
+  .Search-bar {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .Current-Weather {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .right-side {
+    text-align: center;
+  }
+
+  .Days {
+    grid-template-columns: repeat(2, 1fr);
+    /* show 2 columns instead of 5 */
+    gap: 12px;
+  }
+}
+
+
+/* 📱 iPhone SE (very small screens, up to 375px) */
+@media (max-width: 375px) {
+  h2 {
+    font-size: 1rem;
+    /* shrink heading */
+  }
+
+  .Search-bar {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .Search-bar input,
+  .Search-bar button {
+    width: 100%;
+  }
+
+  .Current-Weather {
+    padding: 10px;
+  }
+
+  #temperature {
+    font-size: 1.8rem;
+  }
+
+  .Days {
+    grid-template-columns: 1fr;
+    /* stack forecast cards vertically */
+    gap: 10px;
+  }
+}
