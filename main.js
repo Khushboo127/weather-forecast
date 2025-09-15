@@ -47,7 +47,7 @@ cityInput.addEventListener("keyup", (e) => {
 
 // ---- Fetch Weather by City ----
 async function fetchWeather(city) {
-    if (!city) {
+    if (!city || city.trim() === "") {
         showError("Please enter a valid city name.");
         return;
     }
@@ -134,10 +134,10 @@ function updateUI(data) {
     setBackground(data.weather[0].main);
 
     //  Update current weather details
-    document.querySelector(".wind").innerHTML = `Wind: <span>${data.wind.speed} m/s</span>`;
-    document.querySelector(".humidity").innerHTML = `Humidity: <span>${data.main.humidity}%</span>`;
-    document.querySelector(".pressure").innerHTML = `Pressure: <span>${data.main.pressure} mm</span>`;
-    document.querySelector(".precip").innerHTML = `Precipitation: <span>${data.clouds ? data.clouds.all : "--"}%</span>`;
+    document.querySelector("#wind").innerHTML = `Wind: <span>${data.wind.speed} m/s</span>`;
+    document.querySelector("#humidity").innerHTML = `Humidity: <span>${data.main.humidity}%</span>`;
+    document.querySelector("#pressure").innerHTML = `Pressure: <span>${data.main.pressure} mm</span>`;
+    document.querySelector("#precip").innerHTML = `Precipitation: <span>${data.clouds ? data.clouds.all : "--"}%</span>`;
 
 
 }
